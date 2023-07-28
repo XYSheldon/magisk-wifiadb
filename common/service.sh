@@ -55,7 +55,7 @@ maintain_adb_availability() {
         stop_adb
       fi
     fi
-    sleep 5
+    sleep 10
   done
 }
 
