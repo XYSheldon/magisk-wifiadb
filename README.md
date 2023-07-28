@@ -9,7 +9,7 @@ This way your Wireless debugging(WiFi ADB) will be secure and private(SAFE)
 
 ## Feature
 
-- Ensure WiFi ADB always-ON
+- Ensure WiFi ADB always-ON (checked every 10 seconds)
 
 - Disable WiFi ADB in real time
   
