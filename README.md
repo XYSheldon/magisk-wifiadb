@@ -4,7 +4,7 @@ A Magisk module that adds the equivalent of "Wireless(WiFi) Debugging Option" to
 
 With this module one can have WiFi ADB enabled at all times irresepctive of whether an app is using it(ADB) or not.
 
-A default PORT for wireless debugging is 5555. But with this module you can configure the PORT to one that only YOU know.
+A default PORT for wireless debugging is 45555. But with this module you can configure the PORT to one that only YOU know.
 This way your Wireless debugging(WiFi ADB) will be secure and private(SAFE)
 
 ## Feature
@@ -40,7 +40,7 @@ By setting properties in Android to enable WiFi ADB:
 
 ```shell
 su
-setprop service.adb.tcp.port 5555
+setprop service.adb.tcp.port 45555
 stop adbd
 start adbd
 ```
