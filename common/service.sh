@@ -27,7 +27,7 @@ is_module_enable() {
 
 start_adb() {
   port=$1
-  setprop service.adb.tcp.port "$port"
+  setprop service.adb.tcp.port $port
   stop adbd
   start adbd
 }
@@ -45,13 +45,13 @@ maintain_adb_availability() {
     if [ $? -eq 1 ]; then
       print_log "module is enabled"
       if [ "$(getprop service.adb.tcp.port)" != "$ADB_PORT" ]; then
-        print_log "adb is not started, starting adb"
+        print_log "adb is not started(Port=$(getprop service.adb.tcp.port)), starting adb"
         start_adb "$ADB_PORT"
       fi
     else
       print_log "module is disabled"
       if [ "$(getprop service.adb.tcp.port)" != "" ]; then
-        print_log "adb is not stopped, stopping adb"
+        print_log "adb is not stopped(Port=$(getprop service.adb.tcp.port)), stopping adb"
         stop_adb
       fi
     fi
@@ -76,7 +76,7 @@ parse_config() {
   if echo "$ADB_PORT" | grep -Eq "$ADB_PORT_PATTERN"; then
     print_log "ADB_PORT value: $ADB_PORT"
   else
-    ADB_PORT="5555"
+    ADB_PORT="45555"
     print_log "ADB_PORT parse failed, set to default value: $ADB_PORT"
   fi
 }
@@ -84,7 +84,7 @@ parse_config() {
 # This script will be executed in late_start service mode
 (
   until [ "$(getprop sys.boot_completed)" -eq 1 ]; do
-    sleep 5
+    sleep 10
   done
 
   load_config
